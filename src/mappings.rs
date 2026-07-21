@@ -1,0 +1,88 @@
+#[allow(dead_code)]
+#[derive(Debug, Copy, Clone)]
+pub enum Endpoint {
+    Context,
+    AutoryzacjaPesel,
+    Attendance,
+    Usprawiedliwienia,
+    AttendanceStats,
+    ZarejestrowaneUrzadzenia,
+    RejestracjaUrzadzeniaToken,
+    Zebrania,
+    RealizacjaZajec,
+    ExamsHomework,
+    ExamDetails,
+    HomeworkDetails,
+    Timetable,
+    DniWolne,
+    Uwagi,
+    Nauczyciele,
+    Informacje,
+    DaneUcznia,
+    UczenZdjecie,
+    OkresyKlasyfikacyjne,
+    Grades,
+    RefreshSession,
+    LuckyNumber,
+}
+
+pub fn get_endpoint(endpoint: Endpoint) -> String {
+    get_endpoint2(endpoint, None)
+}
+
+pub fn get_endpoint2(endpoint: Endpoint, version: Option<usize>) -> String {
+    match version.unwrap_or(2) {
+        1 => match endpoint {
+            Endpoint::Context => "99f04f67-d7f6-4f30-9d02-61cdd656612f",
+            Endpoint::AutoryzacjaPesel => "febb23ab-090b-45d0-9c86-b65f44c2baf0",
+            Endpoint::Attendance => "604fd0c1-ce58-4b60-9603-6e219b473676",
+            Endpoint::Usprawiedliwienia => "640531d3-f986-4c1d-a6dd-d57847ca9cd8",
+            Endpoint::AttendanceStats => "1d15fb9f-dda6-42e4-a571-e8e0c2ecad72",
+            Endpoint::ZarejestrowaneUrzadzenia => "ca848077-9fbc-4716-b0ed-17c84b4fc86b",
+            Endpoint::RejestracjaUrzadzeniaToken => "2c9fc7e4-aa35-4346-9cf1-ae50008a95cb",
+            Endpoint::Zebrania => "374625d5-fd26-4082-9fc2-dcf960e6c718",
+            Endpoint::RealizacjaZajec => "0fc3ce8b-efa0-434a-b1a6-e23580ce7e0e",
+            Endpoint::ExamsHomework => "a5371f1b-db92-48a5-88e8-604c716c36a3",
+            Endpoint::ExamDetails => "3365341e-56ce-42e4-a5ee-3f5e30599e02",
+            Endpoint::HomeworkDetails => "f636feab-3bdf-429d-8837-fec248ac6a27",
+            Endpoint::Timetable => "79ad9207-6132-427d-bbfa-62a7cff7735f",
+            Endpoint::DniWolne => "c537e0ea-3a28-40a0-b1d0-4cb051588727",
+            Endpoint::Uwagi => "281cb35f-3943-43a3-910d-32c9198da099",
+            Endpoint::Nauczyciele => "298c16b8-a257-4420-aa96-627c1d8957bf",
+            Endpoint::Informacje => "6773b9c9-bd7c-47fd-9df6-9501d29c40d7",
+            Endpoint::DaneUcznia => "c40b5a6f-4eb5-4b10-b35c-dc8e063ec6f8",
+            Endpoint::UczenZdjecie => "c031961d-3700-494f-bb29-522a54a7097f",
+            Endpoint::OkresyKlasyfikacyjne => "18428deb-8f85-4f97-99b0-0ec35178edcc",
+            Endpoint::Grades => "83cbb389-f3ab-404d-8ecc-9e687b1b958c",
+            Endpoint::RefreshSession => "bb1844a5-7ea2-42f0-b8f2-877f68ba58e6",
+            Endpoint::LuckyNumber => "b97bb5b5-e805-4a03-bf81-58423ea9b414",
+        },
+        2 => match endpoint {
+            Endpoint::Context => "Context",
+            Endpoint::AutoryzacjaPesel => "febb23ab-090b-45d0-9c86-b65f44c2baf0",
+            Endpoint::Attendance => "Frekwencja",
+            Endpoint::Usprawiedliwienia => "640531d3-f986-4c1d-a6dd-d57847ca9cd8",
+            Endpoint::AttendanceStats => "FrekwencjaStatystyki",
+            Endpoint::ZarejestrowaneUrzadzenia => "ca848077-9fbc-4716-b0ed-17c84b4fc86b",
+            Endpoint::RejestracjaUrzadzeniaToken => "2c9fc7e4-aa35-4346-9cf1-ae50008a95cb",
+            Endpoint::Zebrania => "374625d5-fd26-4082-9fc2-dcf960e6c718",
+            Endpoint::RealizacjaZajec => "0fc3ce8b-efa0-434a-b1a6-e23580ce7e0e",
+            Endpoint::ExamsHomework => "SprawdzianyZadaniaDomowe",
+            Endpoint::ExamDetails => "SprawdzianSzczegoly",
+            Endpoint::HomeworkDetails => "ZadanieDomoweSzczegoly",
+            Endpoint::Timetable => "PlanZajec",
+            Endpoint::DniWolne => "c537e0ea-3a28-40a0-b1d0-4cb051588727",
+            Endpoint::Uwagi => "281cb35f-3943-43a3-910d-32c9198da099",
+            Endpoint::Nauczyciele => "298c16b8-a257-4420-aa96-627c1d8957bf",
+            Endpoint::Informacje => "6773b9c9-bd7c-47fd-9df6-9501d29c40d7",
+            Endpoint::DaneUcznia => "c40b5a6f-4eb5-4b10-b35c-dc8e063ec6f8",
+            Endpoint::UczenZdjecie => "c031961d-3700-494f-bb29-522a54a7097f",
+            Endpoint::OkresyKlasyfikacyjne => "OkresyKlasyfikacyjne",
+            Endpoint::Grades => "Oceny",
+            Endpoint::RefreshSession => "bb1844a5-7ea2-42f0-b8f2-877f68ba58e6",
+            Endpoint::LuckyNumber => "b97bb5b5-e805-4a03-bf81-58423ea9b414",
+        },
+        _ => "unknown endpoint version",
+    }
+    .to_owned()
+}
